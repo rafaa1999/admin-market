@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartsService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  createNewCart(model:any) {
-    return this.http.post(environment.baseApi + 'carts' , model )
+  getAllCarts() {
+    return this.http.get(environment.baseApi + 'carts');
   }
 }
