@@ -16,4 +16,8 @@ export class CartsService {
       .append('endDate', param?.end);
     return this.http.get(environment.baseApi + 'carts', { params });
   }
+
+  deleteCart(id:number) {
+    return this.http.delete(environment.baseApi + 'carts/' + id)
+  }
 }

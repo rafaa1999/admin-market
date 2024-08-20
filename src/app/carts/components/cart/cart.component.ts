@@ -45,4 +45,11 @@ export class CartComponent implements OnInit {
       }
     );
   }
+
+  deleteCart(id:number) {
+    this.service.deleteCart(id).subscribe(res => {
+      this.getAllCarts()
+      alert("Cart deleted Success")
+    })
+  }
 }
