@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
 
@@ -8,7 +8,12 @@ import { environment } from 'src/environment/environment';
 export class CartsService {
   constructor(private http: HttpClient) {}
 
-  getAllCarts() {
-    return this.http.get(environment.baseApi + 'carts');
+  // param is optional
+  getAllCarts(param?: any) {
+    let params = new HttpParams();
+    params = params
+      .append('startDate', param?.start)
+      .append('endDate', param?.end);
+    return this.http.get(environment.baseApi + 'carts', { params });
   }
 }
